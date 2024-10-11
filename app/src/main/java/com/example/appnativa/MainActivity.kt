@@ -24,6 +24,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -68,10 +69,10 @@ fun HomeScreen(modifier: Modifier = Modifier){
                 .background(Color(0xFF89E4C4)),
             horizontalArrangement = Arrangement.End
         ){
-            Button(
+            TextButton(
                 modifier = Modifier,
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF89E4C4)),
-                onClick = {}
+                onClick = {   }
             ) {
                 Text(
                     text = "Iniciar Sesión",
