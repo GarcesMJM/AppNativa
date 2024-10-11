@@ -32,7 +32,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.*
@@ -65,17 +67,14 @@ class Products : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductsScreen(listName: String, modifier: Modifier = Modifier) {
-    var categories by remember { mutableStateOf(listOf(
-        Category("Categoría 1", listOf(
-            Product("Producto 1"),
-            Product("Producto 2"),
-            Product("Producto 3")
-        )),
-        Category("Categoría 2", listOf(
-            Product("Producto 1"),
-            Product("Producto 2")
+    var products by remember { mutableStateOf(listOf(
+        Product("Producto 1"),
+        Product("Producto 2"),
+        Product("Producto 3"),
+        Product("Producto 1"),
+        Product("Producto 2")
         ))
-    )) }
+     }
 
     Scaffold(
 
@@ -107,25 +106,30 @@ fun ProductsScreen(listName: String, modifier: Modifier = Modifier) {
                 .padding(innerPadding)
         ) {
             item {
+                Spacer(modifier = Modifier.width(20.dp))
 
-                Row(modifier = Modifier
-                    .padding(20.dp),
-                    verticalAlignment = Alignment.CenterVertically){
-                    Icon(Icons.Default.Add, contentDescription = "Add Product", tint = Color.White)
-                    Text(
-                        "Agregar producto",
-                        color = Color.White,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(16.dp)
+                Button(
+                    onClick = { /* TODO: Handle new list creation */ },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 70.dp, end = 70.dp, top = 15.dp, bottom = 15.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF89E4C4))
+                ) {
+                    Icon(
+                        Icons.Default.Check,
+                        contentDescription = "Create New List",
+                        tint = Color.Black,
+                        modifier = Modifier.size(20.dp)
                     )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("Terminar", color = Color.Black)
                 }
 
             }
 
-            items(categories) { category ->
-                CategoryItem(category) { updatedCategory ->
-                    categories = categories.map { if (it.name == updatedCategory.name) updatedCategory else it }
+            items(products) { product ->
+                ProductItem(product) { isChecked ->
+                    products = products.map { if (it.name == product.name) it.copy(isChecked = isChecked) else it }
                 }
             }
         }
@@ -133,7 +137,7 @@ fun ProductsScreen(listName: String, modifier: Modifier = Modifier) {
 }
 @Composable
 fun CategoryItem(category: Category, onCategoryUpdated: (Category) -> Unit) {
-    var expanded by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(true) }
 
     Column(modifier = Modifier.fillMaxWidth()
         .padding(start = 30.dp, end = 30.dp)) {
@@ -182,12 +186,24 @@ fun CategoryItem(category: Category, onCategoryUpdated: (Category) -> Unit) {
 
 @Composable
 fun ProductItem(product: Product, onCheckedChange: (Boolean) -> Unit) {
-    Row(
+    Column (
         modifier = Modifier
-            .fillMaxWidth()
             .padding(horizontal = 32.dp, vertical = 8.dp),
+    ){
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()       // Que ocupe todo el ancho disponible
+                .height(2.dp)         // Grosor de la línea
+                .background(Color.White) // Color de la línea
+                .padding(bottom = 20.dp)
+        )
+
+        Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
-    ) {
+        ) {
         Checkbox(
             checked = product.isChecked,
             onCheckedChange = onCheckedChange,
@@ -203,6 +219,10 @@ fun ProductItem(product: Product, onCheckedChange: (Boolean) -> Unit) {
             modifier = Modifier.padding(start = 8.dp)
         )
     }
+
+    }
+
+
 }
 
 @Preview(showBackground = true, showSystemUi = true, name = "Productos")
