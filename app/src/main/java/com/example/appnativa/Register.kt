@@ -95,8 +95,8 @@ fun RegisterScreen(appName: String, modifier: Modifier = Modifier) {
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedLabelColor = Color.White,
                     unfocusedLabelColor = Color.White,
-                    focusedTextColor = Color.White,  // Color del texto cuando está enfocado
-                    unfocusedTextColor = Color.White, // Color del texto cuando no está enfocado
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
                     focusedBorderColor = Color(0xFF89E4C4),
                     unfocusedBorderColor = Color(0xFF89E4C4)
                 )
@@ -110,8 +110,8 @@ fun RegisterScreen(appName: String, modifier: Modifier = Modifier) {
                 label = { Text("Email", color = Color(0xFF89E4C4)) },
                 modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedTextColor = Color.White,  // Color del texto cuando está enfocado
-                    unfocusedTextColor = Color.White, // Color del texto cuando no está enfocado
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
                     focusedBorderColor = Color(0xFF89E4C4),
                     unfocusedBorderColor = Color(0xFF89E4C4)
                 )
@@ -127,8 +127,8 @@ fun RegisterScreen(appName: String, modifier: Modifier = Modifier) {
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedTextColor = Color.White,  // Color del texto cuando está enfocado
-                    unfocusedTextColor = Color.White, // Color del texto cuando no está enfocado
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
                     focusedBorderColor = Color(0xFF89E4C4),
                     unfocusedBorderColor = Color(0xFF89E4C4)
                 )

@@ -89,8 +89,8 @@ fun LoginScreen(appName: String, modifier: Modifier = Modifier) {
                 label = { Text("Nombre de usuario", color = Color(0xFF89E4C4)) },
                 modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedTextColor = Color.White,  // Color del texto cuando está enfocado
-                    unfocusedTextColor = Color.White, // Color del texto cuando no está enfocado
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
                     focusedBorderColor = Color(0xFF89E4C4),
                     unfocusedBorderColor = Color(0xFF89E4C4)
                 )
@@ -106,8 +106,8 @@ fun LoginScreen(appName: String, modifier: Modifier = Modifier) {
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedTextColor = Color.White,  // Color del texto cuando está enfocado
-                    unfocusedTextColor = Color.White, // Color del texto cuando no está enfocado
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
                     focusedBorderColor = Color(0xFF89E4C4),
                     unfocusedBorderColor = Color(0xFF89E4C4)
                 )
