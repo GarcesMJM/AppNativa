@@ -22,19 +22,22 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-class Login : ComponentActivity() {
+class Register : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             AppNativaTheme {
-                LoginScreen( appName = "", modifier = Modifier)
+                RegisterScreen( appName = "", modifier = Modifier)
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -47,8 +50,9 @@ class Login : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(appName: String, modifier: Modifier = Modifier) {
+fun RegisterScreen(appName: String, modifier: Modifier = Modifier) {
     var username by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
     Scaffold(
@@ -76,7 +80,7 @@ fun LoginScreen(appName: String, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(32.dp))
 
             Text(
-                text = "Iniciar Sesión",
+                text = "Registrarse",
                 fontSize = 40.sp,
                 color = Color(0xFF89E4C4)
             )
@@ -87,6 +91,23 @@ fun LoginScreen(appName: String, modifier: Modifier = Modifier) {
                 value = username,
                 onValueChange = { username = it },
                 label = { Text("Nombre de usuario", color = Color(0xFF89E4C4)) },
+                modifier = Modifier.fillMaxWidth(),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedLabelColor = Color.White,
+                    unfocusedLabelColor = Color.White,
+                    focusedTextColor = Color.White,  // Color del texto cuando está enfocado
+                    unfocusedTextColor = Color.White, // Color del texto cuando no está enfocado
+                    focusedBorderColor = Color(0xFF89E4C4),
+                    unfocusedBorderColor = Color(0xFF89E4C4)
+                )
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            OutlinedTextField(
+                value = email,
+                onValueChange = { email = it },
+                label = { Text("Email", color = Color(0xFF89E4C4)) },
                 modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedTextColor = Color.White,  // Color del texto cuando está enfocado
@@ -118,9 +139,8 @@ fun LoginScreen(appName: String, modifier: Modifier = Modifier) {
             TextButton(
                 onClick = { /* TODO: Handle registration */ },
                 modifier = Modifier.fillMaxWidth()
-                    .padding(bottom = 10.dp)
             ) {
-                Text("¿Olvidaste tu contraseña?", color = Color(0xFF89E4C4))
+                Text("¿Ya tienes una cuenta? Iniciar Sesión", color = Color(0xFF89E4C4))
             }
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -130,25 +150,19 @@ fun LoginScreen(appName: String, modifier: Modifier = Modifier) {
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF89E4C4))
             ) {
-                Text("Entrar", color = Color.Black)
+                Text("Registrarse", color = Color.Black)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            TextButton(
-                onClick = { /* TODO: Handle registration */ },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text("¿No tienes una cuenta? Regístrate", color = Color(0xFF89E4C4))
-            }
         }
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true, name = "Login")
+@Preview(showBackground = true, showSystemUi = true, name = "Registro")
 @Composable
-fun LoginPreview() {
+fun RegisterPreview() {
     AppNativaTheme {
-        LoginScreen(appName = "")
+        RegisterScreen(appName = "")
     }
 }
