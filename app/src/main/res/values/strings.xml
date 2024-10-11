@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppNativa</string>
+    <string name="title_activity_products">Products</string>
 </resources>
