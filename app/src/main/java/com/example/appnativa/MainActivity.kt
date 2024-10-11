@@ -72,7 +72,7 @@ fun HomeScreen(modifier: Modifier = Modifier){
             TextButton(
                 modifier = Modifier,
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF89E4C4)),
-                onClick = {   }
+                onClick = {}
             ) {
                 Text(
                     text = "Iniciar Sesión",
